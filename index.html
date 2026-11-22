@@ -28,35 +28,35 @@
   header{
     background:linear-gradient(135deg,var(--purple),var(--purple-dark));
     color:#fff;
-    padding:28px 20px 22px;
+    padding:26px 20px 20px;
     text-align:center;
   }
-  header h1{font-size:1.7rem;font-weight:800;letter-spacing:.3px;}
-  header p{opacity:.85;margin-top:4px;font-size:.95rem;}
-  .cat-face{font-size:2.2rem;display:block;margin-bottom:6px;}
-  main{max-width:1080px;margin:0 auto;padding:20px 16px 60px;}
-  h2{font-size:1.15rem;margin:26px 0 12px;display:flex;align-items:center;gap:8px;}
-  h2 .hint{font-size:.78rem;color:var(--muted);font-weight:400;}
+  header h1{font-size:1.6rem;font-weight:800;letter-spacing:.3px;}
+  header p{opacity:.85;margin-top:4px;font-size:.93rem;}
+  .cat-face{font-size:2rem;display:block;margin-bottom:4px;}
+  main{max-width:1080px;margin:0 auto;padding:18px 16px 60px;}
+  h2{font-size:1.1rem;margin:24px 0 10px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+  h2 .hint{font-size:.76rem;color:var(--muted);font-weight:400;}
 
   .panel{
     background:var(--card);
     border-radius:var(--radius);
-    padding:18px;
+    padding:16px;
     box-shadow:0 2px 10px rgba(109,74,255,.08);
-    margin-bottom:18px;
+    margin-bottom:14px;
   }
   .grid-form{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
-    gap:12px;
+    grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+    gap:11px;
   }
-  label{display:block;font-size:.8rem;font-weight:600;color:var(--muted);margin-bottom:4px;}
+  label{display:block;font-size:.78rem;font-weight:600;color:var(--muted);margin-bottom:4px;}
   input,select{
     width:100%;
-    padding:9px 10px;
+    padding:8px 10px;
     border:1.5px solid #ddd6f6;
     border-radius:9px;
-    font-size:.95rem;
+    font-size:.92rem;
     background:#fdfcff;
     color:var(--ink);
   }
@@ -66,8 +66,8 @@
     color:#fff;
     border:none;
     border-radius:10px;
-    padding:11px 20px;
-    font-size:.95rem;
+    padding:10px 18px;
+    font-size:.92rem;
     font-weight:700;
     cursor:pointer;
     transition:background .15s;
@@ -75,265 +75,401 @@
   button:hover{background:var(--purple-dark);}
   button.secondary{background:#e9e3ff;color:var(--purple-dark);}
   button.secondary:hover{background:#dcd2ff;}
-  .form-actions{margin-top:14px;display:flex;gap:10px;flex-wrap:wrap;}
+  button.tiny{background:#e9e3ff;color:var(--purple-dark);padding:4px 9px;font-size:.75rem;border-radius:7px;}
+  .form-actions{margin-top:12px;display:flex;gap:10px;flex-wrap:wrap;}
 
-  .macro-note{font-size:.78rem;color:var(--muted);margin-top:8px;}
+  .macro-note{font-size:.76rem;color:var(--muted);margin-top:8px;}
 
-  /* scoring explainer */
-  .score-explainer{
-    display:flex;gap:14px;flex-wrap:wrap;
+  /* cats */
+  .cat-chips{display:flex;flex-wrap:wrap;gap:8px;align-items:center;}
+  .cat-chip{
+    display:inline-flex;align-items:center;gap:6px;
+    background:var(--purple-light);border-radius:999px;
+    padding:5px 8px 5px 14px;font-weight:700;font-size:.88rem;color:var(--purple-dark);
   }
+  .cat-chip button{
+    background:transparent;color:var(--muted);font-size:.8rem;padding:2px 5px;border-radius:50%;
+  }
+  .add-cat-row{display:flex;gap:8px;margin-top:10px;max-width:340px;}
   .rule-chip{
-    flex:1;min-width:200px;background:var(--purple-light);
-    border-radius:12px;padding:12px 14px;font-size:.86rem;
+    flex:1;min-width:190px;background:var(--purple-light);
+    border-radius:12px;padding:11px 13px;font-size:.84rem;
   }
   .rule-chip b{color:var(--purple-dark);}
+  .score-explainer{display:flex;gap:12px;flex-wrap:wrap;}
 
-  /* table */
+  /* tables */
   .table-wrap{overflow-x:auto;}
-  table{width:100%;border-collapse:collapse;font-size:.9rem;}
+  table{width:100%;border-collapse:collapse;font-size:.88rem;}
   th{
-    text-align:left;padding:9px 10px;color:var(--muted);font-size:.76rem;
+    text-align:left;padding:8px 9px;color:var(--muted);font-size:.74rem;
     text-transform:uppercase;letter-spacing:.4px;border-bottom:2px solid #ece7ff;
     cursor:pointer;white-space:nowrap;user-select:none;
   }
   th.sorted{color:var(--purple);}
-  td{padding:10px;border-bottom:1px solid #f0edfb;vertical-align:middle;}
+  td{padding:9px;border-bottom:1px solid #f0edfb;vertical-align:middle;}
   tr:hover td{background:#fbfaff;}
   .food-name b{display:block;}
-  .food-name span{font-size:.78rem;color:var(--muted);}
-
-  .badge{
-    display:inline-block;padding:3px 10px;border-radius:999px;
-    font-size:.78rem;font-weight:700;white-space:nowrap;
-  }
+  .food-name span{font-size:.76rem;color:var(--muted);}
+  .badge{display:inline-block;padding:3px 9px;border-radius:999px;font-size:.76rem;font-weight:700;white-space:nowrap;}
   .badge.high{background:#e2f6ec;color:var(--green);}
   .badge.mid{background:#fdf3df;color:var(--amber);}
   .badge.low{background:#fde8e8;color:var(--red);}
-  .accept{font-size:1.05rem;white-space:nowrap;}
   .price{white-space:nowrap;}
+  .verdict-cell{white-space:nowrap;font-size:.95rem;}
+  .verdict-cell .vc{margin-right:8px;}
+  .verdict-cell small{color:var(--muted);font-size:.72rem;font-weight:600;}
+  .trend-up{color:var(--green);font-weight:700;}
+  .trend-down{color:var(--red);font-weight:700;}
+  .note-cell{color:var(--muted);font-size:.8rem;font-style:italic;max-width:180px;}
+  .empty{text-align:center;color:var(--muted);padding:24px 10px;font-size:.92rem;}
+  .filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px;}
+  .filters select{max-width:200px;}
 
-  .empty{
-    text-align:center;color:var(--muted);padding:30px 10px;font-size:.95rem;
+  /* verdict buttons */
+  .verdict-picker{display:flex;gap:6px;flex-wrap:wrap;}
+  .vbtn{
+    background:#f1edff;border:1.5px solid transparent;border-radius:9px;
+    padding:6px 8px;font-size:1.1rem;cursor:pointer;transition:all .12s;
   }
+  .vbtn span{display:block;font-size:.62rem;color:var(--muted);font-weight:600;margin-top:2px;}
+  .vbtn.sel{border-color:var(--purple);background:var(--purple-light);}
 
-  /* mini stats */
-  .stats{
-    display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;
-    margin-bottom:18px;
-  }
-  .stat{
-    background:var(--card);border-radius:var(--radius);padding:14px 16px;
-    box-shadow:0 2px 10px rgba(109,74,255,.08);
-  }
-  .stat .val{font-size:1.35rem;font-weight:800;color:var(--purple-dark);}
-  .stat .lbl{font-size:.76rem;color:var(--muted);font-weight:600;}
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:11px;margin-bottom:14px;}
+  .stat{background:var(--card);border-radius:var(--radius);padding:12px 15px;box-shadow:0 2px 10px rgba(109,74,255,.08);}
+  .stat .val{font-size:1.25rem;font-weight:800;color:var(--purple-dark);}
+  .stat .lbl{font-size:.74rem;color:var(--muted);font-weight:600;}
 
-  footer{text-align:center;color:var(--muted);font-size:.78rem;padding:20px;}
-  @media(max-width:640px){ header h1{font-size:1.3rem;} }
+  footer{text-align:center;color:var(--muted);font-size:.76rem;padding:18px;}
+  @media(max-width:640px){ header h1{font-size:1.25rem;} }
 </style>
 </head>
 <body>
 <header>
   <span class="cat-face">🐱</span>
   <h1>Purr Pantry</h1>
-  <p>Track your cats' verdicts, prices &amp; nutrition — because they're obligate carnivores with opinions.</p>
+  <p>Track each cat's verdicts over time, prices &amp; nutrition — obligate carnivores with opinions.</p>
 </header>
 <main>
 
   <div class="stats">
     <div class="stat"><div class="val" id="statCount">0</div><div class="lbl">Foods logged</div></div>
+    <div class="stat"><div class="val" id="statCats">0</div><div class="lbl">Cats</div></div>
+    <div class="stat"><div class="val" id="statLogs">0</div><div class="lbl">Taste tests</div></div>
     <div class="stat"><div class="val" id="statAvgScore">–</div><div class="lbl">Avg welfare score</div></div>
-    <div class="stat"><div class="val" id="statBestFood">–</div><div class="lbl">Top rated food</div></div>
+  </div>
+
+  <h2>🐈 Your cats</h2>
+  <div class="panel">
+    <div class="cat-chips" id="catChips"></div>
+    <div class="add-cat-row">
+      <input id="newCatName" placeholder="New cat's name…" onkeydown="if(event.key==='Enter')addCat()">
+      <button onclick="addCat()">Add</button>
+    </div>
   </div>
 
   <h2>⭐ Animal welfare score — how it works</h2>
   <div class="panel score-explainer">
-    <div class="rule-chip"><b>Protein (max 50 pts)</b><br>≥50% dry matter = full points; scales down to 0 at 25%.</div>
-    <div class="rule-chip"><b>Fat (max 30 pts)</b><br>Ideal band 15–25% dry matter; penalised outside 10–35%.</div>
-    <div class="rule-chip"><b>Carbs (max 20 pts)</b><br>Cats need very few: 0–5% = full points; >20% = zero.</div>
+    <div class="rule-chip"><b>Protein (50 pts)</b><br>Dry matter ≥50% = full; 0 at 25%.</div>
+    <div class="rule-chip"><b>Fat (30 pts)</b><br>Ideal 15–25% dry matter.</div>
+    <div class="rule-chip"><b>Carbs (20 pts)</b><br>Full ≤5%; zero ≥20%.</div>
+    <div class="rule-chip"><b>Taste (avg)</b><br>Average of all cats' logged tastings feeds the combined score.</div>
   </div>
 
-  <h2>➕ Add a wet food <span class="hint">macros should be the “analytical constituents” from the label, in %</span></h2>
+  <h2>➕ Add a wet food <span class="hint">“analytical constituents” from the label, in %</span></h2>
   <div class="panel">
     <div class="grid-form">
       <div><label>Brand &amp; product</label><input id="fName" placeholder="e.g. Feline Feast Chicken"></div>
-      <div><label>Flavour / variety</label><input id="fVariety" placeholder="e.g. chunks in gravy"></div>
+      <div><label>Flavour / variety</label><input id="fVariety" placeholder="chunks in gravy"></div>
       <div><label>Price (per can/pouch)</label><input id="fPrice" type="number" step="0.01" min="0" placeholder="1.29"></div>
       <div><label>Currency</label>
-        <select id="fCurrency">
-          <option>€</option><option>$</option><option>£</option><option>CHF</option>
-        </select>
+        <select id="fCurrency"><option>€</option><option>$</option><option>£</option><option>CHF</option></select>
       </div>
       <div><label>Protein %</label><input id="fProtein" type="number" step="0.1" min="0" placeholder="10.5"></div>
       <div><label>Fat %</label><input id="fFat" type="number" step="0.1" min="0" placeholder="5.0"></div>
       <div><label>Fibre %</label><input id="fFibre" type="number" step="0.1" min="0" placeholder="0.3"></div>
       <div><label>Ash %</label><input id="fAsh" type="number" step="0.1" min="0" placeholder="2.0"></div>
       <div><label>Moisture %</label><input id="fMoisture" type="number" step="0.1" min="0" max="100" placeholder="80"></div>
-      <div><label>Initial acceptance</label>
-        <select id="fAccept">
-          <option value="5">😻 Devoured</option>
-          <option value="4">😊 Ate happily</option>
-          <option value="3">😐 So-so</option>
-          <option value="2">🙈 Picked at it</option>
-          <option value="1">🚫 Refused</option>
-        </select>
-      </div>
     </div>
-    <p class="macro-note">Tip: if the label only shows protein/fat/fibre/ash/moisture, carbs are estimated as 100 − moisture − protein − fat − fibre − ash (Nitrogen-Free Extract).</p>
+    <p class="macro-note">Carbs are estimated as 100 − moisture − protein − fat − fibre − ash (nitrogen-free extract). Acceptance isn't set here — log it below each time your cats eat, so you can watch it change over time.</p>
     <div class="form-actions">
       <button onclick="addFood()">Add to pantry</button>
-      <button class="secondary" onclick="loadDemo()">Load 4 example foods</button>
-      <button class="secondary" onclick="clearAll()">Clear all</button>
+      <button class="secondary" onclick="loadDemo()">Load example data</button>
+      <button class="secondary" onclick="clearAll()">Clear everything</button>
     </div>
   </div>
 
-  <h2>🥫 The pantry <span class="hint">click a column header to sort</span></h2>
+  <h2>🍽️ Log a taste test <span class="hint">who ate what, when — the history builds the trends</span></h2>
+  <div class="panel">
+    <div class="grid-form">
+      <div><label>Date</label><input id="lDate" type="date"></div>
+      <div><label>Cat</label><select id="lCat"></select></div>
+      <div><label>Food</label><select id="lFood"></select></div>
+    </div>
+    <div style="margin-top:10px;">
+      <label>Verdict</label>
+      <div class="verdict-picker" id="verdictPicker"></div>
+    </div>
+    <div style="margin-top:10px;">
+      <label>Note (optional)</label>
+      <input id="lNote" placeholder="e.g. licked the gravy, left the chunks…">
+    </div>
+    <div class="form-actions"><button onclick="addLog()">Save tasting</button></div>
+  </div>
+
+  <h2>🥫 The pantry <span class="hint">shows each cat's latest verdict + trend; click headers to sort</span></h2>
   <div class="panel">
     <div class="table-wrap">
-      <table id="foodTable">
-        <thead>
-          <tr>
-            <th data-sort="name">Food</th>
-            <th data-sort="price">Price</th>
-            <th data-sort="welfare">Welfare score</th>
-            <th data-sort="acceptance">Cat acceptance</th>
-            <th data-sort="combined">Combined</th>
-            <th></th>
-          </tr>
-        </thead>
+      <table>
+        <thead><tr>
+          <th data-sort="name">Food</th>
+          <th data-sort="price">Price</th>
+          <th data-sort="welfare">Welfare</th>
+          <th data-sort="acceptance">Per-cat verdicts</th>
+          <th data-sort="combined">Combined</th>
+          <th></th>
+        </tr></thead>
         <tbody id="foodBody"></tbody>
       </table>
     </div>
     <div class="empty" id="emptyMsg">No foods yet — add your first one above 🐾</div>
   </div>
 
-<footer>Data is stored locally in your browser (localStorage). Not veterinary advice — check with your vet for therapeutic diets.</footer>
+  <h2>📜 Taste-test history <span class="hint">filter by cat or food to follow acceptance over time</span></h2>
+  <div class="panel">
+    <div class="filters">
+      <select id="filterCat" onchange="renderHistory()"></select>
+      <select id="filterFood" onchange="renderHistory()"></select>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Date</th><th>Cat</th><th>Food</th><th>Verdict</th><th>Trend*</th><th>Note</th><th></th></tr></thead>
+        <tbody id="historyBody"></tbody>
+      </table>
+    </div>
+    <div class="empty" id="emptyHistory">No tastings logged yet — use “Log a taste test” above 🍽️</div>
+    <p class="macro-note">* Trend compares this tasting with the same cat's previous tasting of the same food.</p>
+  </div>
+
+<footer>Data stays local in your browser (localStorage). Not veterinary advice — check with your vet for therapeutic diets.</footer>
 </main>
 
 <script>
-let foods = JSON.parse(localStorage.getItem('purrPantry') || '[]');
-let sortKey = 'combined';
-let sortDir = -1;
+const FACES = ['','🚫 refused','🙈 picked','😐 so-so','😊 happy','😻 devoured'];
+const store = JSON.parse(localStorage.getItem('purrPantry2') || '{"cats":[],"foods":[],"logs":[]}');
+let { cats, foods, logs } = store;
+let selVerdict = 4;
+let sortKey = 'combined', sortDir = -1;
 
-function dm(v, moisture){ // convert "as fed" % to dry matter %
-  const dry = 100 - moisture;
-  return dry > 0 ? (v / dry) * 100 : 0;
-}
-
-// Welfare score out of 100 based on dry-matter protein / fat / carbs
-function welfareScore(f){
-  const m = f.moisture;
-  const p = dm(f.protein, m);
-  const ft = dm(f.fat, m);
-  // carbs = NFE estimate
-  const c = Math.max(0, dm(100 - m - f.protein - f.fat - f.fibre - f.ash, m));
-
-  // Protein: 50 pts, full at >=50% DM, linear 0 at 25%
-  const pPts = clamp((p - 25) / (50 - 25), 0, 1) * 50;
-  // Fat: 30 pts, ideal band 15–25% DM; linear decline outside to 0 at 5% or 40%
-  let fPts;
-  if (ft >= 15 && ft <= 25) fPts = 30;
-  else if (ft > 25) fPts = clamp((40 - ft) / (40 - 25), 0, 1) * 30;
-  else fPts = clamp((ft - 5) / (15 - 5), 0, 1) * 30;
-  // Carbs: 20 pts, full at <=5% DM, 0 at >=20%
-  const cPts = clamp((20 - c) / (20 - 5), 0, 1) * 20;
-
-  return Math.round(pPts + fPts + cPts);
-}
-function clamp(x, lo, hi){ return Math.min(hi, Math.max(lo, x)); }
-
-function scoreBadge(s){
-  const cls = s >= 70 ? 'high' : s >= 45 ? 'mid' : 'low';
-  const face = s >= 70 ? '💚' : s >= 45 ? '💛' : '❤️‍🩹';
-  return `<span class="badge ${cls}">${face} ${s}/100</span>`;
-}
-function acceptFace(a){
-  return ['','🚫 refused','🙈 picked','😐 so-so','😊 happy','😻 devoured'][a] || '–';
-}
-function combo(f){ return Math.round(welfareScore(f) * 0.5 + f.acceptance * 20 * 0.5); }
-
-function render(){
-  localStorage.setItem('purrPantry', JSON.stringify(foods));
-  const body = document.getElementById('foodBody');
-  const sorted = [...foods].sort((a,b)=>{
-    const va = keyVal(a, sortKey), vb = keyVal(b, sortKey);
-    if (typeof va === 'string') return sortDir * va.localeCompare(vb);
-    return sortDir * (va - vb);
-  });
-  body.innerHTML = sorted.map((f,i)=>{
-    const idx = foods.indexOf(f);
-    return `<tr>
-      <td class="food-name"><b>${esc(f.name)}</b><span>${esc(f.variety||'')}</span></td>
-      <td class="price">${f.price ? f.currency + f.price.toFixed(2) : '–'}</td>
-      <td>${scoreBadge(welfareScore(f))}</td>
-      <td class="accept">${acceptFace(f.acceptance)}</td>
-      <td>${combo(f)}/100</td>
-      <td><button class="secondary" style="padding:5px 10px;font-size:.8rem" onclick="removeFood(${idx})">✕</button></td>
-    </tr>`;
-  }).join('');
-  document.getElementById('emptyMsg').style.display = foods.length ? 'none' : 'block';
-
-  // stats
-  document.getElementById('statCount').textContent = foods.length;
-  if (foods.length){
-    const avg = Math.round(foods.reduce((s,f)=>s+welfareScore(f),0)/foods.length);
-    document.getElementById('statAvgScore').textContent = avg + '/100';
-    const best = [...foods].sort((a,b)=>combo(b)-combo(a))[0];
-    document.getElementById('statBestFood').textContent = best.name.length > 14 ? best.name.slice(0,14)+'…' : best.name;
-  } else {
-    document.getElementById('statAvgScore').textContent = '–';
-    document.getElementById('statBestFood').textContent = '–';
-  }
-  document.querySelectorAll('th[data-sort]').forEach(th=>{
-    th.classList.toggle('sorted', th.dataset.sort === sortKey);
-  });
-}
-function keyVal(f,k){
-  if (k==='name') return f.name.toLowerCase();
-  if (k==='price') return f.price || 0;
-  if (k==='welfare') return welfareScore(f);
-  if (k==='acceptance') return f.acceptance;
-  return combo(f);
-}
+function save(){ localStorage.setItem('purrPantry2', JSON.stringify({cats,foods,logs})); }
+function uid(){ return Date.now() + Math.random().toString(36).slice(2,7); }
 function esc(s){ const d=document.createElement('div'); d.textContent=s; return d.innerHTML; }
+function clamp(x,lo,hi){ return Math.min(hi,Math.max(lo,x)); }
+function todayStr(){ return new Date().toISOString().slice(0,10); }
+function catById(id){ return cats.find(c=>c.id===id); }
+function foodById(id){ return foods.find(f=>f.id===id); }
 
+/* ---------- welfare score ---------- */
+function dm(v,m){ const dry=100-m; return dry>0 ? v/dry*100 : 0; }
+function welfareScore(f){
+  const m = f.moisture || 80;
+  const p = dm(f.protein,m), ft = dm(f.fat,m);
+  const c = Math.max(0, dm(100-m-f.protein-f.fat-f.fibre-f.ash,m));
+  const pPts = clamp((p-25)/25,0,1)*50;
+  let fPts;
+  if (ft>=15 && ft<=25) fPts=30;
+  else if (ft>25) fPts = clamp((40-ft)/15,0,1)*30;
+  else fPts = clamp((ft-5)/10,0,1)*30;
+  const cPts = clamp((20-c)/15,0,1)*20;
+  return Math.round(pPts+fPts+cPts);
+}
+function scoreBadge(s){
+  const cls = s>=70?'high':s>=45?'mid':'low';
+  return `<span class="badge ${cls}">${s}/100</span>`;
+}
+
+/* ---------- acceptance analytics ---------- */
+// all logs for a food, per cat, sorted by date
+function catLogs(foodId,catId){
+  return logs.filter(l=>l.foodId===foodId&&l.catId===catId)
+             .sort((a,b)=>a.date.localeCompare(b.date)||a.created-b.created);
+}
+function latestVerdict(foodId,catId){
+  const l = catLogs(foodId,catId);
+  return l.length ? l[l.length-1].rating : null;
+}
+function avgVerdict(foodId){
+  let sum=0,n=0;
+  cats.forEach(c=>{
+    const l=catLogs(foodId,c.id);
+    if(l.length){ l.forEach(x=>sum+=x.rating); n+=l.length; }
+  });
+  return n ? sum/n : null;
+}
+function trendMark(foodId,catId,log){
+  // compare with previous tasting by same cat of same food
+  const l = catLogs(foodId,catId);
+  const idx = l.findIndex(x=>x.id===log.id);
+  if (idx<=0) return '<span class="trend-flat">· first</span>';
+  const prev=l[idx-1].rating;
+  if (log.rating>prev) return '<span class="trend-up">↑ improving</span>';
+  if (log.rating<prev) return '<span class="trend-down">↓ fading</span>';
+  return '<span class="trend-flat">→ steady</span>';
+}
+function combined(f){ const a=avgVerdict(f.id); return a==null ? welfareScore(f) : Math.round(welfareScore(f)*0.5 + a*20*0.5); }
+
+/* ---------- cats ---------- */
+function renderCats(){
+  document.getElementById('catChips').innerHTML = cats.map(c=>
+    `<span class="cat-chip">🐈 ${esc(c.name)}<button title="Remove ${esc(c.name)}" onclick="removeCat('${c.id}')">✕</button></span>`
+  ).join('') || '<span class="empty" style="padding:6px;">No cats yet — add your furry testers!</span>';
+}
+function addCat(){
+  const el=document.getElementById('newCatName');
+  const name=el.value.trim();
+  if(!name) return;
+  cats.push({id:uid(),name});
+  el.value='';
+  refreshSelects(); renderAll();
+}
+function removeCat(id){
+  const c=catById(id);
+  if(!confirm(`Remove ${c.name}? Their tasting history stays unless you clear everything.`)) return;
+  cats=cats.filter(x=>x.id!==id);
+  refreshSelects(); renderAll();
+}
+
+/* ---------- foods ---------- */
 function addFood(){
-  const name = document.getElementById('fName').value.trim();
-  if (!name){ alert('Please give the food a name 🐱'); return; }
-  const num = id => parseFloat(document.getElementById(id).value) || 0;
+  const name=document.getElementById('fName').value.trim();
+  if(!name){ alert('Please give the food a name 🐱'); return; }
+  const num=id=>parseFloat(document.getElementById(id).value)||0;
   foods.push({
-    name, variety: document.getElementById('fVariety').value.trim(),
-    price: num('fPrice'), currency: document.getElementById('fCurrency').value,
-    protein: num('fProtein'), fat: num('fFat'), fibre: num('fFibre'),
-    ash: num('fAsh'), moisture: num('fMoisture') || 80,
-    acceptance: parseInt(document.getElementById('fAccept').value)
+    id:uid(), name, variety:document.getElementById('fVariety').value.trim(),
+    price:num('fPrice'), currency:document.getElementById('fCurrency').value,
+    protein:num('fProtein'), fat:num('fFat'), fibre:num('fFibre'),
+    ash:num('fAsh'), moisture:num('fMoisture')||80
   });
   ['fName','fVariety','fPrice','fProtein','fFat','fFibre','fAsh','fMoisture'].forEach(id=>document.getElementById(id).value='');
-  render();
+  refreshSelects(); renderAll();
 }
-function removeFood(i){ foods.splice(i,1); render(); }
-function clearAll(){ if (confirm('Remove all foods?')) { foods=[]; render(); } }
+function removeFood(id){
+  foods=foods.filter(f=>f.id!==id);
+  refreshSelects(); renderAll();
+}
 
-document.querySelectorAll('th[data-sort]').forEach(th=>{
-  th.addEventListener('click',()=>{
-    if (sortKey === th.dataset.sort) sortDir *= -1;
-    else { sortKey = th.dataset.sort; sortDir = -1; }
-    render();
+/* ---------- logs ---------- */
+function renderVerdictPicker(){
+  document.getElementById('verdictPicker').innerHTML =
+    [1,2,3,4,5].map(v=>`<button class="vbtn ${v===selVerdict?'sel':''}" onclick="pickVerdict(${v})">${['','🚫','🙈','😐','😊','😻'][v]}<span>${['','refused','picked','so-so','happy','devoured'][v]}</span></button>`).join('');
+}
+function pickVerdict(v){ selVerdict=v; renderVerdictPicker(); }
+function addLog(){
+  const catId=document.getElementById('lCat').value;
+  const foodId=document.getElementById('lFood').value;
+  if(!catId||!foodId){ alert('You need at least one cat and one food to log a tasting 🐾'); return; }
+  logs.push({
+    id:uid(), catId, foodId,
+    date:document.getElementById('lDate').value||todayStr(),
+    rating:selVerdict, note:document.getElementById('lNote').value.trim(),
+    created:Date.now()
   });
-});
+  document.getElementById('lNote').value='';
+  renderAll();
+}
+function removeLog(id){ logs=logs.filter(l=>l.id!==id); renderAll(); }
+
+/* ---------- rendering ---------- */
+function renderPantry(){
+  document.getElementById('emptyMsg').style.display = foods.length?'none':'block';
+  const kv = f => sortKey==='name'?f.name.toLowerCase(): sortKey==='price'?(f.price||0): sortKey==='welfare'?welfareScore(f): sortKey==='acceptance'?(avgVerdict(f.id)||0):combined(f);
+  const sorted=[...foods].sort((a,b)=>{ const va=kv(a),vb=kv(b); return typeof va==='string'?sortDir*va.localeCompare(vb):sortDir*(va-vb); });
+  document.getElementById('foodBody').innerHTML = sorted.map(f=>{
+    const cell = cats.map(c=>{
+      const v=latestVerdict(f.id,c.id);
+      if(v==null) return '';
+      const l=catLogs(f.id,c.id);
+      const t = l.length>1 ? (v>l[l.length-2].rating?'<span class="trend-up">↑</span>':v<l[l.length-2].rating?'<span class="trend-down">↓</span>':'') : '';
+      return `<span class="vc"><small>${esc(c.name)}</small> ${['','🚫','🙈','😐','😊','😻'][v]}${t}</span>`;
+    }).join('') || '<span style="color:var(--muted);font-size:.8rem;">not tested yet</span>';
+    return `<tr>
+      <td class="food-name"><b>${esc(f.name)}</b><span>${esc(f.variety||'')}</span></td>
+      <td class="price">${f.price?f.currency+f.price.toFixed(2):'–'}</td>
+      <td>${scoreBadge(welfareScore(f))}</td>
+      <td class="verdict-cell">${cell}</td>
+      <td><b>${combined(f)}</b>/100</td>
+      <td><button class="tiny" onclick="removeFood('${f.id}')">✕</button></td>
+    </tr>`;
+  }).join('');
+  document.querySelectorAll('th[data-sort]').forEach(th=>th.classList.toggle('sorted',th.dataset.sort===sortKey));
+}
+function renderHistory(){
+  const fc=document.getElementById('filterCat').value, ff=document.getElementById('filterFood').value;
+  const rows=[...logs].filter(l=>(!fc||l.catId===fc)&&(!ff||l.foodId===ff))
+    .sort((a,b)=>b.date.localeCompare(a.date)||b.created-a.created);
+  document.getElementById('emptyHistory').style.display = rows.length?'none':'block';
+  document.getElementById('historyBody').innerHTML = rows.map(l=>{
+    const c=catById(l.catId), f=foodById(l.foodId);
+    return `<tr>
+      <td>${l.date}</td>
+      <td><b>${esc(c?c.name:'?')}</b></td>
+      <td>${esc(f?f.name:'(deleted food)')}</td>
+      <td>${FACES[l.rating]}</td>
+      <td>${f&&c?trendMark(l.foodId,l.catId,l):''}</td>
+      <td class="note-cell">${esc(l.note||'')}</td>
+      <td><button class="tiny" onclick="removeLog('${l.id}')">✕</button></td>
+    </tr>`;
+  }).join('');
+}
+function refreshSelects(){
+  const opt=(arr,ph)=>'<option value="">'+ph+'</option>'+arr.map(x=>`<option value="${x.id}">${esc(x.name)}</option>`).join('');
+  document.getElementById('lCat').innerHTML=opt(cats,'choose cat…');
+  document.getElementById('lFood').innerHTML=opt(foods,'choose food…');
+  document.getElementById('filterCat').innerHTML=opt(cats,'all cats');
+  document.getElementById('filterFood').innerHTML=opt(foods,'all foods');
+}
+function renderStats(){
+  document.getElementById('statCount').textContent=foods.length;
+  document.getElementById('statCats').textContent=cats.length;
+  document.getElementById('statLogs').textContent=logs.length;
+  document.getElementById('statAvgScore').textContent = foods.length ? Math.round(foods.reduce((s,f)=>s+welfareScore(f),0)/foods.length)+'/100' : '–';
+}
+function renderAll(){ save(); renderCats(); renderPantry(); renderHistory(); renderStats(); }
+
+document.querySelectorAll('th[data-sort]').forEach(th=>th.addEventListener('click',()=>{
+  if(sortKey===th.dataset.sort) sortDir*=-1; else { sortKey=th.dataset.sort; sortDir=-1; }
+  renderPantry();
+}));
 
 function loadDemo(){
-  foods.push(
-    {name:'Whiskas Pouch',variety:'chicken in gravy',price:0.85,currency:'€',protein:8.5,fat:4.5,fibre:0.5,ash:2.0,moisture:82,acceptance:5},
-    {name:'Animonda Carny',variety:'beef & turkey',price:1.10,currency:'€',protein:11.0,fat:5.5,fibre:0.3,ash:2.3,moisture:79,acceptance:4},
-    {name:'GranataPet Symphonie',variety:'chicken & salmon',price:1.60,currency:'€',protein:10.2,fat:5.2,fibre:0.4,ash:2.4,moisture:80,acceptance:5},
-    {name:'Cheapo Mystery Meat',variety:'meaty chunks',price:0.45,currency:'€',protein:6.0,fat:3.0,fibre:1.0,ash:3.0,moisture:84,acceptance:1}
+  const c1={id:uid(),name:'Mochi'}, c2={id:uid(),name:'Pixel'};
+  cats.push(c1,c2);
+  const f1={id:uid(),name:'Whiskas Pouch',variety:'chicken in gravy',price:0.85,currency:'€',protein:8.5,fat:4.5,fibre:0.5,ash:2.0,moisture:82};
+  const f2={id:uid(),name:'Animonda Carny',variety:'beef & turkey',price:1.10,currency:'€',protein:11.0,fat:5.5,fibre:0.3,ash:2.3,moisture:79};
+  const f3={id:uid(),name:'GranataPet Symphonie',variety:'chicken & salmon',price:1.60,currency:'€',protein:10.2,fat:5.2,fibre:0.4,ash:2.4,moisture:80};
+  foods.push(f1,f2,f3);
+  const d=n=>{ const t=new Date(); t.setDate(t.getDate()-n); return t.toISOString().slice(0,10); };
+  logs.push(
+    {id:uid(),catId:c1.id,foodId:f1.id,date:d(21),rating:2,note:'sniffed and walked away',created:1},
+    {id:uid(),catId:c1.id,foodId:f1.id,date:d(14),rating:3,note:'ate some when very hungry',created:2},
+    {id:uid(),catId:c1.id,foodId:f1.id,date:d(6),rating:4,note:'getting used to it',created:3},
+    {id:uid(),catId:c1.id,foodId:f1.id,date:d(1),rating:5,note:'licked the bowl clean!',created:4},
+    {id:uid(),catId:c2.id,foodId:f1.id,date:d(10),rating:5,note:'instant fan',created:5},
+    {id:uid(),catId:c2.id,foodId:f2.id,date:d(12),rating:5,note:'',created:6},
+    {id:uid(),catId:c2.id,foodId:f2.id,date:d(4),rating:3,note:'maybe boredom?',created:7},
+    {id:uid(),catId:c1.id,foodId:f3.id,date:d(3),rating:1,note:'full boycott',created:8}
   );
-  render();
+  refreshSelects(); renderAll();
+}
+function clearAll(){
+  if(confirm('Remove ALL cats, foods and tasting history?')){
+    cats=[];foods=[];logs=[];
+    refreshSelects(); renderAll();
+  }
 }
 
-render();
+document.getElementById('lDate').value=todayStr();
+refreshSelects(); renderVerdictPicker(); renderAll();
 </script>
 </body>
 </html>
