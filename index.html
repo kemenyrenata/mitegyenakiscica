@@ -52,7 +52,6 @@
   .food-name span{font-size:.75rem;color:var(--muted);}
   .price-cell{white-space:nowrap;}
   .price-cell .pkg{font-weight:700;}
-  .price-cell .pkg small{font-weight:400;color:var(--muted);}
   .price-cell .perkg{font-size:.76rem;color:var(--muted);}
   .badge{display:inline-block;padding:3px 9px;border-radius:999px;font-size:.76rem;font-weight:700;white-space:nowrap;}
   .badge.high{background:#e2f6ec;color:var(--green);}
@@ -199,7 +198,7 @@
       <table>
         <thead><tr>
           <th data-sort="name">Food</th>
-          <th data-sort="price">Price / kg</th>
+          <th data-sort="price">Price</th>
           <th data-sort="welfare">Welfare</th>
           <th data-sort="acceptance">Per-cat verdicts</th>
           <th data-sort="combined">Combined (taste over time)</th>
@@ -211,11 +210,21 @@
     <div class="empty" id="emptyMsg">No foods yet — add your first one above 🐾</div>
   </div>
 
-  <h2>📜 Taste-test history <span class="hint">filter by cat or brand to follow acceptance over time</span></h2>
+  <h2>📜 Taste-test history <span class="hint">filter by cat, brand and/or variety to follow acceptance over time</span></h2>
   <div class="panel">
     <div class="filters">
-      <select id="filterCat" onchange="renderHistory()"></select>
-      <select id="filterFood" onchange="renderHistory()"></select>
+      <div>
+        <label>Cat</label>
+        <select id="filterCat" onchange="renderHistory()"></select>
+      </div>
+      <div>
+        <label>Brand</label>
+        <select id="filterHistBrand" onchange="onHistBrandChange()"></select>
+      </div>
+      <div>
+        <label>Variety</label>
+        <select id="filterHistFood" onchange="renderHistory()"></select>
+      </div>
     </div>
     <div class="table-wrap">
       <table>
@@ -469,9 +478,12 @@ function renderPantry(){
       ? `${SHORT[Math.round(ts.avg)]} avg ${ts.avg.toFixed(1)} <small>(${ts.n} tasting${ts.n>1?'s':''})</small> → <b>${combined(f)}</b>/100`
       : `<small>no tastings yet · welfare ${welfareScore(f)}</small>`;
     const meta=[f.format,f.sizeG?f.sizeG+' g':''].filter(Boolean).join(' · ');
+    const priceCell = pi
+      ? `<span class="pkg">${pi.pkg}</span>${pi.perKg?`<br><span class="perkg">${pi.perKg}</span>`:''}`
+      : '–';
     return `<tr class="${f.archived?'archived-row':''}">
       <td class="food-name"><b>${esc(f.variety||'(no variety)')}</b><span>${esc(f.brand)}${meta?' — '+esc(meta):''}${f.archived?' · 🗄️ archived':''}</span></td>
-      <td class="price-cell">${pi?`<span class="pkg">${pi.pkg}${f.sizeG?` <small>/${f.sizeG} g ${f.currency==='EUR'?'€':'Ft'}</small>`:''}</span>${pi.perKg?`<br><span class="perkg">${pi.perKg}</span>`:''}`:'–'}</td>
+      <td class="price-cell">${priceCell}</td>
       <td>${scoreBadge(welfareScore(f))}</td>
       <td class="verdict-cell">${verdictCell}</td>
       <td>${combCell}</td>
@@ -485,9 +497,18 @@ function renderPantry(){
   document.querySelectorAll('th[data-sort]').forEach(th=>th.classList.toggle('sorted',th.dataset.sort===sortKey));
 }
 function renderHistory(){
-  const fc=document.getElementById('filterCat').value, ff=document.getElementById('filterFood').value;
-  const rows=[...logs].filter(l=>(!fc||l.catId===fc)&&(!ff||l.foodId===ff))
-    .sort((a,b)=>b.date.localeCompare(a.date)||b.created-a.created);
+  const fc=document.getElementById('filterCat').value;
+  const fb=document.getElementById('filterHistBrand').value;
+  const ff=document.getElementById('filterHistFood').value;
+  const rows=[...logs].filter(l=>{
+    if(fc && l.catId!==fc) return false;
+    if(ff && l.foodId!==ff) return false;
+    if(fb){
+      const f=foodById(l.foodId);
+      if(!f || f.brand!==fb) return false;
+    }
+    return true;
+  }).sort((a,b)=>b.date.localeCompare(a.date)||b.created-a.created);
   document.getElementById('emptyHistory').style.display=rows.length?'none':'block';
   document.getElementById('historyBody').innerHTML=rows.map(l=>{
     const c=catById(l.catId), f=foodById(l.foodId);
@@ -507,9 +528,34 @@ function refreshSelects(){
   document.getElementById('lBrand').innerHTML='<option value="">choose brand…</option>'+brands.map(b=>`<option>${esc(b)}</option>`).join('');
   document.getElementById('filterBrand').innerHTML='<option value="">all brands</option>'+[...new Set(foods.map(f=>f.brand))].sort().map(b=>`<option>${esc(b)}</option>`).join('');
   document.getElementById('filterCat').innerHTML='<option value="">all cats</option>'+cats.map(c=>`<option value="${c.id}">${esc(c.name)}</option>`).join('');
-  document.getElementById('filterFood').innerHTML='<option value="">all foods</option>'+foods.map(f=>`<option value="${f.id}">${esc(f.variety? f.variety+' — '+f.brand : f.brand)}</option>`).join('');
   document.getElementById('lCat').innerHTML='<option value="">choose cat…</option>'+cats.map(c=>`<option value="${c.id}">${esc(c.name)}</option>`).join('');
+  refreshHistFilters(true);
   fillVarieties(true);
+}
+function refreshHistFilters(keep){
+  const fbSel=document.getElementById('filterHistBrand');
+  const ffSel=document.getElementById('filterHistFood');
+  const prevB=keep?fbSel.value:'';
+  const prevF=keep?ffSel.value:'';
+  const histBrands=[...new Set(logs.map(l=>{const f=foodById(l.foodId);return f?f.brand:null;}).filter(Boolean))].sort();
+  fbSel.innerHTML='<option value="">all brands</option>'+histBrands.map(b=>`<option>${esc(b)}</option>`).join('');
+  fillHistVarieties();
+  if(prevB&&histBrands.includes(prevB)) fbSel.value=prevB;
+  fillHistVarieties();
+  if(prevF&&[...ffSel.options].some(o=>o.value===prevF)) ffSel.value=prevF;
+}
+function fillHistVarieties(){
+  const fb=document.getElementById('filterHistBrand').value;
+  const ffSel=document.getElementById('filterHistFood');
+  const pool=logs.map(l=>foodById(l.foodId)).filter(Boolean)
+    .filter(f=>!fb||f.brand===fb);
+  const uniq=[...new Map(pool.map(f=>[f.id,f])).values()]
+    .sort((a,b)=>a.brand.localeCompare(b.brand)||(a.variety||'').localeCompare(b.variety||''));
+  ffSel.innerHTML='<option value="">all varieties</option>'+uniq.map(f=>`<option value="${f.id}">${esc(f.variety? f.variety+' — '+f.brand : f.brand)}</option>`).join('');
+}
+function onHistBrandChange(){
+  fillHistVarieties();
+  renderHistory();
 }
 function fillVarieties(keep){
   const brand=document.getElementById('lBrand').value;
@@ -525,7 +571,7 @@ function renderStats(){
   document.getElementById('statLogs').textContent=logs.length;
   document.getElementById('statAvgScore').textContent=foods.length?Math.round(foods.reduce((s,f)=>s+welfareScore(f),0)/foods.length)+'/100':'–';
 }
-function renderAll(){ save(); renderCats(); renderPantry(); renderHistory(); renderStats(); }
+function renderAll(){ save(); renderCats(); renderPantry(); renderHistory(); renderStats(); refreshHistFilters(true); }
 
 document.querySelectorAll('th[data-sort]').forEach(th=>th.addEventListener('click',()=>{
   if(sortKey===th.dataset.sort) sortDir*=-1; else {sortKey=th.dataset.sort; sortDir=-1;}
