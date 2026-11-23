@@ -70,6 +70,7 @@
   .filters select,.filters input{max-width:200px;width:auto;min-width:150px;}
   .checkbox-row{display:flex;align-items:center;gap:6px;font-size:.84rem;color:var(--muted);font-weight:600;padding-bottom:8px;}
   .checkbox-row input{width:auto;min-width:0;}
+  .cur-controls{border-top:1px dashed #e5defc;margin-top:4px;padding-top:11px;}
   .verdict-picker{display:flex;gap:6px;flex-wrap:wrap;}
   .vbtn{background:#f1edff;border:1.5px solid transparent;border-radius:9px;padding:6px 8px;font-size:1.05rem;cursor:pointer;transition:all .12s;}
   .vbtn span{display:block;font-size:.6rem;color:var(--muted);font-weight:600;margin-top:2px;}
@@ -95,24 +96,6 @@
     <div class="stat"><div class="val" id="statCats">0</div><div class="lbl">Cats</div></div>
     <div class="stat"><div class="val" id="statLogs">0</div><div class="lbl">Taste tests</div></div>
     <div class="stat"><div class="val" id="statAvgScore">–</div><div class="lbl">Avg welfare score</div></div>
-  </div>
-
-  <h2>💱 Prices &amp; currency <span class="hint">your own EUR ⇄ Ft rate, applied everywhere</span></h2>
-  <div class="panel">
-    <div class="inline-controls">
-      <div>
-        <label>Show prices in</label>
-        <select id="setDisplay" onchange="saveSettings()">
-          <option value="EUR">Euro (€)</option>
-          <option value="HUF">Forint (Ft)</option>
-        </select>
-      </div>
-      <div>
-        <label>Exchange rate: 1 € = … Ft</label>
-        <input id="setRate" type="number" step="0.01" min="0.01" onchange="saveSettings()" placeholder="405">
-      </div>
-    </div>
-    <p class="macro-note">Pack prices are stored in their original currency (€ or Ft) and converted for display using this rate.</p>
   </div>
 
   <h2>🐈 Your cats</h2>
@@ -182,7 +165,7 @@
     <div class="form-actions"><button onclick="addLog()">Save tasting</button></div>
   </div>
 
-  <h2>🥫 The pantry <span class="hint">variety on top, brand below · per-kg prices · click headers to sort</span></h2>
+  <h2>🥫 The pantry <span class="hint">variety on top, brand below · Price header sorts by per-kg price · click headers to sort</span></h2>
   <div class="panel">
     <div class="filters">
       <div>
@@ -193,6 +176,22 @@
         <input type="checkbox" id="showArchived" onchange="renderPantry()">
         <span>Show archived (hidden) foods</span>
       </div>
+    </div>
+    <div class="cur-controls">
+      <div class="inline-controls">
+        <div>
+          <label>💱 Show prices in</label>
+          <select id="setDisplay" onchange="saveSettings()">
+            <option value="EUR">Euro (€)</option>
+            <option value="HUF">Forint (Ft)</option>
+          </select>
+        </div>
+        <div>
+          <label>Exchange rate: 1 € = … Ft</label>
+          <input id="setRate" type="number" step="0.01" min="0.01" onchange="saveSettings()" placeholder="405">
+        </div>
+      </div>
+      <p class="macro-note">Pack prices are stored in their original currency (€ or Ft) and converted for display using this rate. Sorting by Price always uses the per-kg value in your display currency.</p>
     </div>
     <div class="table-wrap">
       <table>
